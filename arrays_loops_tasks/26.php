@@ -13,12 +13,12 @@ var_dump($arr);
 $result = 1;
 $odd_index = [];
 foreach ($arr as $key => $value) {
-    if ($value > 0 && !$key % 2) {
-        $result = $result * $value;
+    if (!($key % 2) && $value > 0) {
+        $result *= $value;
     }
-    elseif ($value > 0 && $key % 2) {
+    if ($key % 2 && $value > 0) {
         $odd_index[] = $value;
     }
 }
-
+echo "<p> The result is :  $result </p>";
 var_dump($odd_index);
