@@ -21,5 +21,4 @@ foreach ($arr as $key => $value) {
     }
 }
 
-
 var_dump($odd_index);
