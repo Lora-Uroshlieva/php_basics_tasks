@@ -1,7 +1,7 @@
 <?php
 
 function normalisation($str) {
-    $str =  mb_strtolower($str, 'UTF-8');
+    $str = strtolower($str);
     $str = preg_replace('#[.,!]#', '', $str);
     $words = explode(' ', $str);
     return $words;
