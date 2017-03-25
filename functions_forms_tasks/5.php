@@ -30,4 +30,5 @@ function find_file($path, string $word) {
     }
 }
 
-find_file(__DIR__, '1');
+$path = realpath(__DIR__);
+find_file($path, '1');
