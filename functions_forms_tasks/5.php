@@ -1,8 +1,11 @@
 <?php
-//Написать функцию, которая выводит список файлов в заданной директории.
-// Директория задается как параметр функции.
 
-function read_dir($path) {
+//Написать функцию, которая выводит список файлов в заданной директории,
+// которые содержат искомое слово.
+//  Директория и искомое слово задаются как параметры функции.
+
+
+function find_file($path, string $word) {
     if ($handle = opendir($path)) {
         echo "Directory handle: $handle", PHP_EOL;
         echo "Entries: ", PHP_EOL;
@@ -11,7 +14,10 @@ function read_dir($path) {
             if ($entry === '.' || $entry === '..') {
                 continue;
             }
-            echo $entry, PHP_EOL;
+            elseif (stristr($entry, $word)) {
+                echo $entry, PHP_EOL;
+            }
+
 
             $entry_path = $path.DIRECTORY_SEPARATOR.$entry;
 
@@ -24,4 +30,4 @@ function read_dir($path) {
     }
 }
 
-read_dir(__DIR__);
+find_file(__DIR__, '1');
