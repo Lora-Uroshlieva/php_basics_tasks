@@ -4,7 +4,7 @@
 
 
 
-function change_sentense(string $string) {
+function change_sentence(string $string) {
     $arr = explode('. ', $string);
     $result = '';
     for ($i = 0; $i < count($arr); $i++) {
@@ -16,4 +16,4 @@ function change_sentense(string $string) {
 
 
 $text = 'а васька слушает да ест. а воз и ныне там. а вы друзья как ни садитесь, все в музыканты не годитесь. а король-то — голый. а ларчик просто открывался. а там хоть трава не расти.';
-var_dump(change_sentense($text));
+var_dump(change_sentence($text));
