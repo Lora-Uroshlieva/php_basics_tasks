@@ -24,8 +24,9 @@ function readDirRecursive($path) {
                 continue;
             }
 
-            echo $entry, '<br>';
+            echo $entry, ' - name, <br>';
             $entryPath = $path.DIRECTORY_SEPARATOR.$entry;
+            echo $entryPath, ' - is full path. <br>';
 
             if (is_dir($entryPath)) {
                 readDirRecursive($entryPath);

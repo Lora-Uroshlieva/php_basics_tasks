@@ -1,4 +1,5 @@
 <?php
+
 //Написать функцию, которая в качестве аргумента принимает строку,
 // и форматирует ее таким образом, что каждое новое предложение начиняется с большой буквы.
 
@@ -8,8 +9,13 @@ function change_sentence(string $string) {
     $arr = explode('. ', $string);
     $result = '';
     for ($i = 0; $i < count($arr); $i++) {
-        $result .= mb_ucfirst($arr[$i]);
-        $result .= '. ';
+        $part = $arr[$i];
+        $first_letter = mb_strtoupper(mb_substr($part, 0, 1));
+        $result  .= $first_letter;
+        $result .= mb_substr($part, 1);
+        if (mb_substr($part, -1) !== '.') {
+            $result .= '. ';
+        }
     }
     return $result;
 }
