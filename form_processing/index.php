@@ -2,10 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Latest compiled and minified CSS -->
-<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/-->
-<!--    3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7-->
-<!--    on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
     <title>Comments</title>
 </head>
 <body>
@@ -35,12 +31,10 @@ if (!empty($_POST)) {
     $text = $_POST['comment'];
     $data = "{$username}|{$text}.PHP_EOL";
     var_dump('<br>', $data);
-    $path = __DIR__.'/comments.txt';
+    $path = __DIR__.'/data/comments.txt';
+    var_dump($path);
     $handle = fopen($path, 'a');
     $a = fwrite($handle, $data);
-
-
-//    $a = file_put_contents(__DIR__.'/comments.txt', "{$username}|{$text}.PHP_EOL");
     var_dump($a);
     fclose($handle);
 };
