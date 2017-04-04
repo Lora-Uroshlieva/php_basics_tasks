@@ -10,7 +10,8 @@
 </head>
 <body>
     <div class="container" style="margin-top: 30px">
-        <form  method="post">
+        <h2>Write a comment</h2>
+        <form method="post" action="main.php">
             <div class="form-group">
                 <label for="username">Name of user</label>
                 <input type="text" name="username" id="username">
@@ -26,7 +27,3 @@
 
 </body>
 </html>
-
-<?php
-var_dump($_POST);
-?>
