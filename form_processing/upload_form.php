@@ -22,5 +22,5 @@
 </body>
 
 <?php
-var_dump($_FILES);
+
 include __DIR__.'/include/file_upload.php';

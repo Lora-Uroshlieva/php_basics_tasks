@@ -1,18 +1,32 @@
 <?php
+$setting = ini_set('upload_max_filesize', 5000);
+$restriction = ini_get('upload_max_filesize');
+var_dump($setting);
+
+
 $uploadFolder = __DIR__.'/../uploads/';
 
-$uploadFile = $uploadFolder.basename($_FILES['myFile']['name']);
-var_dump($uploadFile);
+if (!empty($_FILES)) {
+    $myFile = $_FILES['myFile'];
 
-echo '<pre>';
+    $uploadFile = $uploadFolder.basename($_FILES['myFile']['name']);
+    if ($myFile['type'] === 'text/xml') {
+        simplexml_load_file($myFile['tmp_name']);
+    }
 
-if (move_uploaded_file($_FILES['myFile']['tmp_name'], $uploadFile)) {
-    echo "The file is correct. Downloaded successfully \n";
-} else {
-    echo "The attack is possible by using file uploading \n";
+    echo '<pre>';
+
+    if (move_uploaded_file($_FILES['myFile']['tmp_name'], $uploadFile)) {
+        echo "The file is correct. Downloaded successfully \n";
+    } else {
+        echo "The attack is possible by using file uploading \n";
+    }
+
+    echo "Some additional information: \n";
+    print_r($_FILES);
+
+    print("</pre>");
 }
 
-echo "Some additional information: \n";
-print_r($_FILES);
 
-print("</pre>");
+
