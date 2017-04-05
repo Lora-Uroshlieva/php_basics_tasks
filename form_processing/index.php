@@ -30,7 +30,7 @@
 </html>
 
 <?php
-$content = file_get_contents(__DIR__.'/data/comments.json');
+$content = file_get_contents(__DIR__.'/data/comments.srl');
 $comments = explode('.PHP_EOL', $content);
 ?>
 
@@ -56,41 +56,47 @@ $comments = explode('.PHP_EOL', $content);
 if (!empty($_POST)) {
     $username = strip_tags($_POST['username']);
     $text = strip_tags($_POST['comment']);
+    $data = "{$username}|{$text}.PHP_EOL";
 
-    $fileName = 'comments1.json';
-    $pathToFile = 'data/data1';
+
+    $fileName = 'comments.srl';
+    $pathToFile = __DIR__.DIRECTORY_SEPARATOR.'data';
     if (!is_dir($pathToFile)) {
-        mkdir($pathToFile, $recursive=true);
+        mkdir($pathToFile, $mode=0777, $recursive=true);
     }
 
-    $path = __DIR__.DIRECTORY_SEPARATOR.$pathToFile.DIRECTORY_SEPARATOR.$fileName;
+    $path = $pathToFile.DIRECTORY_SEPARATOR.$fileName;
     if (!file_exists($path)) {
         $fp = fopen($path, 'r');
         fclose($fp);
     }
 
-    $jsonContent = file_get_contents($path);
-    $comments = json_decode($jsonContent);
-    $comments[] = [$username, $text];
-    file_put_contents($path, json_encode($comments));
+    //Writing into json-file.
+//    $jsonContent = file_get_contents($path);
+//    $comments = json_decode($jsonContent);
+//    $comments[] = [$username, $text];
+//    file_put_contents($path, json_encode($comments));
 
 
-
-
-
-//    $data = "{$username}|{$text}.PHP_EOL";
-//
-//
-//
+    // Write in file using function file_put_contents().
 //    $isWritten = file_put_contents($path, $data, $flags=FILE_APPEND);
+
+
+    //Write in file using function fopen().
 //    $handler = fopen($path, 'a');  //another way to write in file
-//    $a = fwrite($handler, $data);
+//    $isWritten = fwrite($handler, $data);
 //    fclose($handler);
-
-
 //    if ($isWritten) {
-//    echo "<p>Your comment is very important for us!</p>";
+//        echo "<p>Your comment is very important for us!</p>";
 //    }
+
+
+    //Serialisation of data.
+    $serializedContent = file_get_contents($path);
+
+    $comments = unserialize($serializedContent);
+    $comments[] = [$username, $text];
+    file_put_contents($path, serialize($comments), $flags=FILE_APPEND);
 }
 
 ?>
