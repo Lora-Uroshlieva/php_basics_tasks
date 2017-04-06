@@ -24,3 +24,4 @@
 <?php
 
 include __DIR__.'/include/file_upload.php';
+include __DIR__.'/include/photo-view.php';
