@@ -1,7 +1,6 @@
 <?php
 $setting = ini_set('upload_max_filesize', 5000);
 $restriction = ini_get('upload_max_filesize');
-var_dump($setting);
 
 
 $uploadFolder = __DIR__.'/../uploads/';
