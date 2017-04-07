@@ -1,5 +1,5 @@
 <?php
-$fileName = __DIR__.'/data.txt';
+$fileName = __DIR__ . '/data.txt';
 
 $handle = fopen($fileName, "rw");
 fwrite($handle, '\n The second string in file.');
