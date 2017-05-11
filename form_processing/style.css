@@ -1,0 +1,9 @@
+body {
+    text-align: center;
+    font: normal 18px sans-serif;
+    background: url(img/bg.png);
+}
+
+hr {
+    width: 1000px;
+}
